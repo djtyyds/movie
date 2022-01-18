@@ -9,6 +9,6 @@ func InitEngine() {
 	userGroup := en.Group("/user")
 	{
 		userGroup.Use(auth)
-		userGroup.POST("/SignOut", SignOut) //修改密码
+		userGroup.POST("/SignOut", SignOut) //退出登录
 	}
 }
