@@ -3,8 +3,9 @@ package model
 import "time"
 
 type ShortComment struct {
-	Username    string    `json:"username"`
+	Id1         string    `json:"id"`
+	Username1   string    `json:"username"`
 	Txt         string    `json:"txt"`
-	commentTime time.Time `json:"comment_time"`
-	Useful      int       `json:"useful"`
+	CommentTime time.Time `json:"comment_time"`
+	Useful1     int       `json:"useful"`
 }

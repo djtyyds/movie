@@ -42,3 +42,11 @@ func IsPasswordRight(username string, password string) (bool, error) {
 	}
 	return true, nil
 }
+
+func MyCritics(name string) (model.FilmCritics, error) {
+	return dao.MyCritics(name)
+}
+
+func MyWantSee() (model.Movie, error) {
+	return dao.MyWantSee()
+}

@@ -1,6 +1,7 @@
 package api
 
 import (
+	"database/sql"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"movie/model"
@@ -57,4 +58,19 @@ func login(c *gin.Context) {
 func SignOut(c *gin.Context) {
 	c.SetCookie("username", "", -1, "/", "", false, false)
 	tool.RespSuccessful(c)
+}
+
+func MyCritics(c *gin.Context) {
+	IUsername, _ := c.Get("username")
+	username := IUsername.(string)
+	myCritics, err := service.MyCritics(username)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			tool.RespErrorWithData(c, "您还没有写过影评...")
+			return
+		}
+		tool.RespInternalError(c)
+		return
+	}
+	tool.RespSuccessfulWithData(c, myCritics)
 }
